@@ -143,6 +143,11 @@ int isSane(int *a, int n){
     int flag=0,m;
     for(m=1;m<n;m++){
         if(a[m-1]>a[m]){
+            int j;
+            puts("");
+            for(j=m-3;j<m+3;j++){
+                printf("%d ",a[j]);
+            }
             flag=1;
         }
     }
