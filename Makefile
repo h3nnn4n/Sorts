@@ -1,17 +1,25 @@
+CC=gcc
+CFLAGS=-O2 
+
+all: heap insertion bubble stooge quick merge
+
 heap:
-	gcc heapsort.c -o heapsort -O2
+	$(CC) heapsort.c -o heapsort $(CFLAGS)
 
 insertion:
-	gcc insertionsort.c -o insertionsort -O2
+	$(CC) insertionsort.c -o insertionsort $(CFLAGS)
 
 bubble:
-	gcc bubblesort.c -o bubblesort -O2
+	$(CC) bubblesort.c -o bubblesort $(CFLAGS)
 
 stooge:
-	gcc stoogesort.c -o stoogesort -O2
+	$(CC) stoogesort.c -o stoogesort $(CFLAGS)
 
 merge:
-	gcc mergesort.c -o mergesort -O2
+	$(CC) mergesort.c -o mergesort $(CFLAGS)
+
+quick:
+	$(CC) quicksort.c -o quicksort $(CFLAGS)
 
 clean:
-	rm -rf core heapsort insertionsort bubblesort a.out stoogesort mergesort
+	rm -rf core heapsort insertionsort bubblesort a.out stoogesort mergesort quicksort
