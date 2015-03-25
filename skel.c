@@ -25,6 +25,7 @@
 #include <stdlib.h>
 #include <time.h>
 
+void print(int *a,int n);
 void swap(int *a, int *b);
 int isSane(int *a, int n);
 
@@ -58,6 +59,16 @@ void swap(int *a,int *b){
     t=*a;
     *a=*b;
     *b=t;
+}
+
+// Simple print function for the data vector
+void print(int *a,int n){
+    int i;
+
+    for(i=0;i<n;i++){
+        printf("%3d ",a[i]);
+    }
+    printf("\n");
 }
 
 // Checks if the algorithm is working, the time for this isn't counted into the answer
