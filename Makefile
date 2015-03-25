@@ -10,5 +10,8 @@ bubble:
 stooge:
 	gcc stoogesort.c -o stoogesort -O2
 
+merge:
+	gcc mergesort.c -o mergesort -O2
+
 clean:
-	rm -rf core heapsort insertionsort bubblesort a.out stoogesort
+	rm -rf core heapsort insertionsort bubblesort a.out stoogesort mergesort
