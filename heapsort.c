@@ -25,6 +25,7 @@
 #include <stdlib.h>
 #include <time.h>
 
+void heapSanity(int *a,int i,int n);
 void print(int *a,int n);
 void swap(int *a,int *b);
 int left(int i);
@@ -56,6 +57,25 @@ int main(int argc, char *argv[]){
     printf("%f %d\n", (double)t/CLOCKS_PER_SEC,n);
 
     return isSane(a,n);
+}
+
+// Checks if a heap is sane
+void heapSanity(int *a,int i,int n){
+    if( left(i) < n)
+        if( a[i] >= a[left(i)] )
+            heapSanity(a,left(i),n);
+        else{
+            int l=left(i);
+            fprintf(stderr,"ERROR!! heap not sane %d %d\n", a[i], a[left(i)]);
+        }
+
+    if( right(i) < n )
+        if( a[i] >= a[right(i)] )
+            heapSanity(a,right(i),n);
+        else{
+            int r=right(i);
+            fprintf(stderr,"ERROR!! heap not sane %d %d\n", a[i], a[right(i)]);
+        }
 }
 
 // Returns the left children
@@ -96,6 +116,7 @@ void heapify(int *a, int n, int i){
         swap(&a[i],&a[bigger]);
         heapify(a,n,bigger);
     }
+
 }
 
 // Returns the top element on the heap and calls heapify to maintain the structure
@@ -112,7 +133,7 @@ int heapExtract(int *a, int n){
 void buildHeap(int *a,int n){
     int i;
 
-    for(i=(n-1)/2-1;i>=0;i--){
+    for(i=(n-1)/2;i>=0;i--){
         heapify(a,n,i);
     }
 }
@@ -122,6 +143,7 @@ void heapSort(int *a,int n){
     int i;
 
     buildHeap(a,n);
+    heapSanity(a,i,n);
     for(i=n-1;i>0;i--){
         swap(&a[0],&a[i]);
         heapify(a,i,0);
