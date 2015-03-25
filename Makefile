@@ -7,5 +7,8 @@ insertion:
 bubble:
 	gcc bubblesort.c -o bubblesort -O2
 
+stooge:
+	gcc stoogesort.c -o stoogesort -O2
+
 clean:
-	rm -rf core heapsort insertionsort bubblesort a.out
+	rm -rf core heapsort insertionsort bubblesort a.out stoogesort
