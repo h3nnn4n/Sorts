@@ -2,7 +2,7 @@
 
 SORTS='merge heap quick'
 TESTS=`seq  500 1000 50000`
-RUNS=`seq 0 50`
+RUNS=`seq 0 5`
 
 make clean
 make
