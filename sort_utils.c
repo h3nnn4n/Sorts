@@ -19,7 +19,7 @@ int* vector_fill_almost_sorted(int n){
         int r = rand()%7-3;
 
         if (i + r >= 0 && i + r < n){
-            swap(&v[i], &v[i+r]);
+            vector_swap(&v[i], &v[i+r]);
         }
     }
 
@@ -37,7 +37,7 @@ int* vector_fill_unique(int n){
     }
 
     for ( i = 0 ; i < n ; i++){
-        swap(&v[i],&v[rand()%n]);
+        vector_swap(&v[i],&v[rand()%n]);
     }
 
     return v;
@@ -67,7 +67,7 @@ int* vector_fill_few_unique(int n){
     return v;
 }
 
-void swap(int *a,int *b){
+void vector_swap(int *a,int *b){
     int t;
     t=*a;
     *a=*b;
