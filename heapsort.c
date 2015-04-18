@@ -16,11 +16,6 @@
  *
  */
 
-/*
- * This sample of code is intended to be a simple exercise for myself
- * and maybe serve as a help to someone.
- *
- */
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
