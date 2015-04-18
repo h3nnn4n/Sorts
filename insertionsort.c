@@ -25,6 +25,8 @@
 #include <stdlib.h>
 #include <time.h>
 
+#include "sort_utils.h"
+
 void print(int *a,int n);
 void swap(int *a, int *b);
 int isSane(int *a, int n);
@@ -38,8 +40,19 @@ int main(int argc, char *argv[]){
 
     srand(time(NULL));
 
-    for(i=0;i<n;i++){
-        a[i]=rand()%n;
+    if(argc > 2){
+        int k = atoi(argv[2]);
+        if(k == 1){
+            a = vector_fill_almost_sorted(n);
+        }else if(k == 2){
+            a = vector_fill_few_unique(n);
+        }else if(k == 3){
+            a = vector_fill_reverse(n);
+        }else if(k == 4){
+            a = vector_fill_unique(n);
+        }
+    }else{
+        a = vector_fill_unique(n);
     }
 
     time_t t=clock();
