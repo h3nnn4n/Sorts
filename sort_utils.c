@@ -23,7 +23,6 @@ int* vector_fill_almost_sorted(int n){
         }
     }
 
-
     return v;
 }
 

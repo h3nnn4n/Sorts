@@ -58,7 +58,7 @@ int main(int argc, char *argv[]){
 
     time_t t=clock();
 
-    quickSort(a,0,n);
+    quickSort(a,0,n-1);
 
     t=clock()-t;
 
@@ -72,23 +72,21 @@ int partition(int *a, int l, int h){
     int pivot;
 
     pivot = a[h];
-    i=l-1;
+    i=l;
 
     for(j=l;j<h;j++){
-        if(a[j]<=pivot){
-            i++;
-            swap(&a[i],&a[j]);
+        if(a[j]<pivot){
+            swap(&a[i++],&a[j]);
         }
     }
 
-    swap(&a[++i],&a[h]);
+    swap(&a[i],&a[h]);
     return i;
 }
 
 void quickSort(int *a, int l, int h){
     if(l<h){
-        int p=partition(a,l,h);
-        int i;
+        int p = partition(a,l,h);
         quickSort(a,l,p-1);
         quickSort(a,p+1,h);
     }
