@@ -28,11 +28,18 @@ void print(int *a,int n);
 void swap(int *a, int *b);
 int isSane(int *a, int n);
 
+int compareint (const void * a, const void * b)
+{
+    if ( *(int*)a <  *(int*)b ) return -1;
+    if ( *(int*)a == *(int*)b ) return 0;
+    if ( *(int*)a >  *(int*)b ) return 1;
+}
+
 int main(int argc, char *argv[]){
     int n = atoi(argv[1]);
     int *a = vector_fill_almost_sorted(n);
 
-    int i,j,m,flag;
+        int i,j,m,flag;
 
     srand(time(NULL));
 
@@ -53,6 +60,7 @@ int main(int argc, char *argv[]){
 
     time_t t=clock();
 
+    //qsort(a, n, sizeof(int), compareint);
     quickSort(a,0,n-1);
 
     t=clock()-t;
@@ -66,7 +74,18 @@ int partition(int *a, int l, int h){
     int i, j;
     int pivot;
 
-    pivot = a[h];
+    // Middle element as pivot
+    //j = l + (int)(h-l)/2;
+
+    // Random element as pivot
+    j = l + rand() % (h-l);
+
+    pivot = a[j];
+    swap(&a[j],&a[h]);
+
+    // Last element as pivot
+    //pivot = a[h];
+
     i=l;
 
     for(j=l;j<h;j++){
